@@ -3,18 +3,17 @@ import { Form, Button } from "semantic-ui-react";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
+import { useForm } from "../utils/hooks";
+
 const Register = props => {
   const [errors, setErrors] = useState({});
-  const [values, setValues] = useState({
+
+  const { onChange, onSubmit, values } = useForm(registerUser, {
     username: "",
     email: "",
     password: "",
     confirmPassword: ""
   });
-
-  const onChange = e => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
 
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
     update(_, result) {
@@ -26,10 +25,10 @@ const Register = props => {
     variables: values
   });
 
-  const onSubmit = e => {
-    e.preventDefault();
+  // we use a function here as it's hoisted and we can use it in the callback above when the function keyword unlike const
+  function registerUser() {
     addUser();
-  };
+  }
 
   return (
     <div className="form-container">
