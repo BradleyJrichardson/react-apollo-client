@@ -7,6 +7,7 @@ import { AuthContext } from "../context/auth";
 import { useForm } from "../utils/hooks";
 
 const Login = props => {
+  const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
   const { onChange, onSubmit, values } = useForm(loginUserCb, {
     username: "",
@@ -14,8 +15,14 @@ const Login = props => {
   });
 
   const [loginUser, { loading }] = useMutation(LOGIN_USER, {
-    update(_, result) {
+    update(
+      _,
+      {
+        data: { login: userData }
+      }
+    ) {
       props.history.push("/");
+      context.login(userData); // destructing and giving alian to result.data.login
     },
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
