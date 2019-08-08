@@ -18,7 +18,6 @@ const PostForm = () => {
       const data = proxy.readQuery({
         query: FETCH_POSTS_QUERY
       });
-      console.log(data);
       const { getPosts: existingPosts } = data;
       const { createPost: newPosts } = result.data;
 
