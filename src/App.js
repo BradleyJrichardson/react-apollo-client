@@ -11,7 +11,7 @@ import Nav from "./components/Nav";
 import SinglePost from "./pages/SinglePost";
 import { AuthProvider } from "./context/auth";
 import AuthRoute from "./utils/AuthRoute";
-
+a;
 function App() {
   return (
     <AuthProvider>
