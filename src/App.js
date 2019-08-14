@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Container } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
-
+s;
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -11,7 +11,7 @@ import Nav from "./components/Nav";
 import SinglePost from "./pages/SinglePost";
 import { AuthProvider } from "./context/auth";
 import AuthRoute from "./utils/AuthRoute";
-a;
+
 function App() {
   return (
     <AuthProvider>
